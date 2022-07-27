@@ -1,4 +1,17 @@
-- task: CopyFiles@2
-  inputs:
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+trigger:
+ branches:
+   include:
+     - Testing
+
+stages:
+  - stage: dev_read_build
+    displayName: read the Dev file
+    jobs:
+    - job: build
+      pool:
+       vmImage: vs2017-win2016
+      steps:
+      - task: CopyFiles@2
+        inputs:
+          Contents: '**'
+          TargetFolder: '$(build.artifactstagingdirectory)/dev'
