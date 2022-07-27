@@ -1,1 +1,4 @@
-I'm yaml for Dev
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
